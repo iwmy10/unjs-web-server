@@ -1,5 +1,6 @@
 import { defineCommand, runMain } from "citty";
 import { name, description, version } from "../package.json";
+import { listen } from "./listen";
 
 export const main = defineCommand({
   meta: {
@@ -7,13 +8,9 @@ export const main = defineCommand({
     description,
     version,
   },
-  args: {
-    name: {
-      type: "positional",
-    },
-  },
-  run({ args }) {
-    console.log(`Hello, ${args.name}!`);
+  args: {},
+  async run({ args }) {
+    await listen();
   },
 });
 
