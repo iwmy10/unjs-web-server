@@ -1,0 +1,11 @@
+{
+  "name": "unjs-web-server-playground",
+  "private": true,
+  "scripts": {
+    "start": "unjs-web-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "unjs-web-server": "file:.."
+  }
+}
