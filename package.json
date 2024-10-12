@@ -1,6 +1,6 @@
 {
   "name": "@iwmy10/unjs-web-server",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "a simple web server",
   "license": "MIT",
   "exports": {
@@ -11,6 +11,10 @@
     }
   },
   "bin": "./bin/cli.mjs",
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "build": "unbuild",
     "serve": "jiti ./src/cli.ts",
