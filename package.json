@@ -1,0 +1,17 @@
+{
+  "name": "unjs-web-server",
+  "version": "1.0.0",
+  "description": "a simple web server",
+  "license": "MIT",
+  "scripts": {
+    "serve": "jiti ./src/cli.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "citty": "^0.1.6",
+    "jiti": "^2.3.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
