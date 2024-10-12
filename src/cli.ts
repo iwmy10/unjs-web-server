@@ -1,4 +1,4 @@
-import { defineCommand, runMain } from "citty";
+import { defineCommand, runMain as _runMain } from "citty";
 import { name, description, version } from "../package.json";
 import { listen } from "./listen";
 
@@ -14,4 +14,4 @@ export const main = defineCommand({
   },
 });
 
-runMain(main);
+export const runMain = () => _runMain(main);

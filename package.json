@@ -10,6 +10,7 @@
       "require": "./dist/cli.cjs"
     }
   },
+  "bin": "./bin/cli.mjs",
   "scripts": {
     "build": "unbuild",
     "serve": "jiti ./src/cli.ts",
