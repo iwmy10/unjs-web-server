@@ -6,6 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "unjs-web-server": "file:.."
+    "@iwmy10/unjs-web-server": "file:.."
   }
 }
