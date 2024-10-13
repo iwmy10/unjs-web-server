@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "serve": "jiti ./src/cli.ts",
+    "serve": "node ./scripts/cli.mjs",
+    "play": "cd ./playground && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
