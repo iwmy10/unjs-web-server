@@ -1,13 +1,12 @@
 import { getPort } from "get-port-please";
 import { createServer } from "node:http";
+import { colors } from "consola/utils";
 
 export async function listen() {
   // --- Resolve Options ---
   // --- Validate Options ---
   // --- Resolve Port ---
-  const port = await getPort({
-    port: 3000,
-  });
+  const port = await getPort();
   // --- Listen ---
   let server = createServer((req, res) => {
     res.statusCode = 200;
@@ -16,9 +15,11 @@ export async function listen() {
   });
 
   const hostname = "localhost";
-  await server.listen(port, hostname);
+  server.listen(port, hostname);
 
-  console.log(`Listening on http://${hostname}:${port}`);
+  const label = colors.green(`  ➜ ${"Local:".padEnd(8, " ")} `);
+  const url = colors.cyan(colors.underline(`http://${hostname}:${port}/`));
+  console.log(label + url);
   // --- GetURL Utility ---
   // --- Close Utility ---
   // --- GetURLs Utility ---
