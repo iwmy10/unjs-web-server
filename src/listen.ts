@@ -1,18 +1,25 @@
 import { getPort } from "get-port-please";
 import { createServer } from "node:http";
 import { colors } from "consola/utils";
+import { createJiti } from "jiti";
 
-export async function listen() {
+export async function listen({ entry }: { entry: string }) {
   // --- Resolve Options ---
   // --- Validate Options ---
   // --- Resolve Port ---
   const port = await getPort();
   // --- Listen ---
-  let server = createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "text/plain");
-    res.end("Hello World");
+
+  // ユーザーの指定したエントリーファイルを読み込む
+  const jiti = createJiti(process.cwd(), {
+    cache: true,
+    requireCache: false,
+    interopDefault: true,
   });
+  const app = (await jiti.import(entry)) as any;
+  const handler = app.default._handle;
+
+  let server = createServer(handler);
 
   const hostname = "localhost";
   server.listen(port, hostname);

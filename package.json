@@ -4,6 +4,11 @@
   "description": "a simple web server",
   "license": "MIT",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
     "./cli": {
       "types": "./dist/cli.d.ts",
       "import": "./dist/cli.mjs",
@@ -18,14 +23,15 @@
   "scripts": {
     "build": "unbuild",
     "serve": "node ./scripts/cli.mjs",
-    "play": "cd ./playground && npm run start",
+    "play": "node ./scripts/cli.mjs ./playground/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "citty": "^0.1.6",
     "consola": "^3.2.3",
     "get-port-please": "^3.1.2",
-    "jiti": "^2.3.3"
+    "jiti": "^2.3.3",
+    "rou3": "^0.5.1"
   },
   "devDependencies": {
     "@types/node": "^22.7.5",

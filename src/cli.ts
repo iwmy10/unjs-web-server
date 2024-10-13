@@ -8,9 +8,15 @@ export const main = defineCommand({
     description,
     version,
   },
-  args: {},
+  args: {
+    entry: {
+      type: "positional",
+      description: "entry file (./app.ts)",
+      required: true,
+    },
+  },
   async run({ args }) {
-    await listen();
+    await listen(args);
   },
 });
 
