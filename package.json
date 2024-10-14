@@ -27,8 +27,7 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "serve": "node ./scripts/cli.mjs",
-    "play": "node ./scripts/cli.mjs ./playground/app.ts",
+    "play": "node ./scripts/cli.mjs dev ./playground/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
