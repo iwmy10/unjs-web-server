@@ -13,6 +13,11 @@
       "types": "./dist/cli.d.ts",
       "import": "./dist/cli.mjs",
       "require": "./dist/cli.cjs"
+    },
+    "./runtime": {
+      "types": "./dist/listen.d.ts",
+      "import": "./dist/listen.mjs",
+      "require": "./dist/listen.cjs"
     }
   },
   "bin": "./bin/cli.mjs",
@@ -22,16 +27,19 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "serve": "node ./scripts/cli.mjs",
-    "play": "node ./scripts/cli.mjs ./playground/app.ts",
+    "play": "node ./scripts/cli.mjs dev ./playground/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
     "citty": "^0.1.6",
     "consola": "^3.2.3",
     "get-port-please": "^3.1.2",
     "jiti": "^2.3.3",
+    "rollup": "^4.24.0",
     "rou3": "^0.5.1",
+    "tslib": "^2.7.0",
     "ufo": "^1.5.4"
   },
   "devDependencies": {

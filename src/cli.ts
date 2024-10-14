@@ -1,6 +1,5 @@
 import { defineCommand, runMain as _runMain } from "citty";
 import { name, description, version } from "../package.json";
-import { listen } from "./listen";
 
 export const main = defineCommand({
   meta: {
@@ -8,15 +7,9 @@ export const main = defineCommand({
     description,
     version,
   },
-  args: {
-    entry: {
-      type: "positional",
-      description: "entry file (./app.ts)",
-      required: true,
-    },
-  },
-  async run({ args }) {
-    await listen(args);
+  subCommands: {
+    dev: () => import("./cli_dev").then((r) => r.default),
+    build: () => import("./cli_build").then((r) => r.default),
   },
 });
 

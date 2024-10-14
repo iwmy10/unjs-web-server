@@ -2,10 +2,12 @@
   "name": "unjs-web-server-playground",
   "private": true,
   "scripts": {
-    "start": "unjs-web-server ./app.ts",
+    "dev": "unjs-web-server dev ./app.ts",
+    "build": "unjs-web-server build ./app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "@iwmy10/unjs-web-server": "file:.."
   }
 }
+
