@@ -17,12 +17,17 @@ export async function build({ entry }: { entry: string }) {
   const appFilePath = resolve(entry);
 
   const inputOptions: RollupOptions = {
-    /* ... */
-    input: [appFilePath, "@iwmy10/unjs-web-server/runtime"],
+    input: {
+      app: appFilePath,
+      listen: "@iwmy10/unjs-web-server/runtime",
+    },
     plugins: [
       typescript({
         // 右のエラーが出たのでmoduleResolutionを指定。"@rollup/plugin-typescript TS2307: Cannot find module '@iwmy10/unjs-web-server' or its corresponding type declarations."
         moduleResolution: "Bundler",
+        compilerOptions: {
+          allowJs: true,
+        },
       }),
       nodeResolve(),
     ],
