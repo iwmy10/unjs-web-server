@@ -6,6 +6,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@iwmy10/unjs-web-server": "file:.."
+    "@iwmy10/unjs-web-server": "file:..",
+    "rollup": "^4.24.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "tslib": "^2.7.0"
   }
 }
