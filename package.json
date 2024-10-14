@@ -13,6 +13,11 @@
       "types": "./dist/cli.d.ts",
       "import": "./dist/cli.mjs",
       "require": "./dist/cli.cjs"
+    },
+    "./runtime": {
+      "types": "./dist/listen.d.ts",
+      "import": "./dist/listen.mjs",
+      "require": "./dist/listen.cjs"
     }
   },
   "bin": "./bin/cli.mjs",

@@ -4,12 +4,18 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import fsp from "node:fs/promises";
 
+const appFilePath = resolve('app.ts')
+console.log(appFilePath);
+
 // see below for details on these options
 const inputOptions: RollupOptions = {
 	/* ... */
-  input: resolve(__dirname, 'entry.ts'),
+  input: [
+    appFilePath,
+    // resolve(process.cwd(), 'entry.ts'),
+    "@iwmy10/unjs-web-server/runtime",
+  ],
   plugins: [
-
     typescript({
       // 右のエラーが出たのでmoduleResolutionを指定。"@rollup/plugin-typescript TS2307: Cannot find module '@iwmy10/unjs-web-server' or its corresponding type declarations."
       moduleResolution: 'Bundler',
@@ -76,7 +82,7 @@ async function generateOutputs(bundle: RollupBuild) {
 				//   source: string | Uint8Array    // the asset source
 				//   type: 'asset'                  // signifies that this is an asset
 				// }
-				console.log('Asset', chunkOrAsset);
+				// console.log('Asset', chunkOrAsset);
 			} else {
 				// For chunks, this contains
 				// {
@@ -106,7 +112,7 @@ async function generateOutputs(bundle: RollupBuild) {
 				//   referencedFiles: string[]      // files referenced via import.meta.ROLLUP_FILE_URL_<id>
 				//   type: 'chunk',                 // signifies that this is a chunk
 				// }
-				console.log('Chunk', chunkOrAsset.modules);
+				// console.log('Chunk', chunkOrAsset.modules);
 			}
 		}
 	}

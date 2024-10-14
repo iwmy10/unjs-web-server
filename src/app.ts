@@ -19,7 +19,7 @@ type Context = { params?: Record<string, string>; query: any };
 type Handler = (ctx: Context) => string;
 type AppRoute = { handler: Handler };
 
-class App {
+export class App {
   _router: RouterContext<AppRoute>;
   constructor() {
     this._router = createRouter();
