@@ -1,27 +1,30 @@
-import { resolve } from "path";
+import { parse, resolve } from "path";
 import { OutputOptions, rollup, RollupBuild, RollupOptions } from "rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import fsp from "node:fs/promises";
+import virtual from "@rollup/plugin-virtual";
 
-const mainJs = `const app = require("./app");
-const { listen } = require("./listen");
+const indexTs = (appFilePath: string) =>
+  `import app from "${appFilePath}";
+import { listen } from "@iwmy10/unjs-web-server/runtime";
 
 listen({ app });`;
 
 export async function build({ entry }: { entry: string }) {
   await fsp.rm(".output", { recursive: true, force: true });
   await fsp.mkdir(".output", { recursive: true });
-  await fsp.writeFile(".output/main.js", mainJs);
 
   const appFilePath = resolve(entry);
 
   const inputOptions: RollupOptions = {
     input: {
-      app: appFilePath,
-      listen: "@iwmy10/unjs-web-server/runtime",
+      index: "index",
     },
     plugins: [
+      virtual({
+        index: indexTs(appFilePath),
+      }),
       typescript({
         // 右のエラーが出たのでmoduleResolutionを指定。"@rollup/plugin-typescript TS2307: Cannot find module '@iwmy10/unjs-web-server' or its corresponding type declarations."
         moduleResolution: "Bundler",

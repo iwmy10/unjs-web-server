@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "unjs-web-server dev ./app.ts",
     "build": "unjs-web-server build ./app.ts",
+    "preview": "node ./.output/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
